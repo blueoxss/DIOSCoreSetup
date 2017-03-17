@@ -1,0 +1,30 @@
+#!/bin/sh
+sudo apt-get update
+sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
+sudo apt-get install git-core
+wget http://jaist.dl.sourceforge.net/project/scons/scons/2.4.1/scons-2.4.1.tar.gz
+tar -xvf scons-2.4.1.tar.gz
+wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
+tar -xvf sqlite-autoconf-3140100.tar.gz
+wget http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.tar.gz
+tar -xvf freexl-1.0.2.tar.gz
+wget https://github.com/OSGeo/proj.4/archive/master.zip
+unzip master.zip
+wget http://gaia-gis.it/gaia-sins/readosm-1.0.0e.tar.gz
+tar -xvf readosm-1.0.0e.tar.gz
+wget http://download.osgeo.org/geos/geos-3.5.0.tar.bz2
+tar -xvf geos-3.5.0.tar.bz2
+wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
+tar -xvf libspatialite-4.3.0a.tar.gz
+wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
+tar -xvf spatialite-tools-4.3.0.tar.gz
+wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-15.04.00b-src.tar.gz
+tar -xvf alljoyn-15.04.00b-src.tar.gz
+wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-services-15.04.00-src.tar.gz
+tar -xvf alljoyn-services-15.04.00-src.tar.gz
+
+
+
+
+
+git clone atena@129.254.88.47:/home/atena/dios-repo.git

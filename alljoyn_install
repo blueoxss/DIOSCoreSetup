@@ -23,8 +23,4 @@ tar -xvf alljoyn-15.04.00b-src.tar.gz
 wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-services-15.04.00-src.tar.gz
 tar -xvf alljoyn-services-15.04.00-src.tar.gz
 
-
-
-
-
-git clone atena@129.254.88.47:/home/atena/dios-repo.git
+git clone atena:atena@129.254.88.47:/home/atena/dios-repo.git

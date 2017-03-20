@@ -1,0 +1,18 @@
+#!/bin/sh
+sudo apt-get install g++
+sudo apt-get install libg11-mesa-dev libglu1-mesa-dev
+sudo apt-get install build-essential
+
+sudo apt-add-repository ppa:ubuntu-sdk-team/ppa   
+sudo apt-get update
+
+sudo apt-get install qtdeclarative4-dev
+
+mkdir qtinstaller
+cd qtinstaller
+wget http://ftp.jaist.ac.jp/pub/qtproject/archive/qt/5.6/5.6.2/qt-opensource-linux-x64-5.6.2.run 
+
+chmod a+x qt-opensource-linux-x64-5.6.2.run
+./qt-opensource-linux-x86-5.6.2.run
+
+sudo apt-get install qtdeclarative5-dev

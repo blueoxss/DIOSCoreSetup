@@ -6,6 +6,7 @@ cd setup
 sudo apt-get update
 sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
 sudo apt-get install git-core
+#yes
 sudo apt-get install python
 
 #wget http://jaist.dl.sourceforge.net/project/scons/scons/2.4.1/scons-2.4.1.tar.gz
@@ -19,9 +20,12 @@ sudo apt-get install autoconf
 autoreconf
 ./configure
 sudo make install
+#yes
 
 sudo apt-get install doxygen
+#yes
 sudo apt-get install graphviz
+#yes
 
 ### for building JAVAScript plug-in use
 #cd $HOME/Downloads
@@ -83,4 +87,7 @@ git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
 cd $AJ_ROOT/core/alljoyn
 scons BINDINGS=cpp, WS=off ALL=1 VARIANT=release
 
-git clone atena:atena@129.254.88.47:/home/atena/dios-repo.git
+cd $HOME/
+git clone atena@129.254.88.47:/home/atena/dios-repo.git
+#yes
+#pw:atena

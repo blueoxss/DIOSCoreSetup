@@ -5,6 +5,7 @@ cd setup
 
 sudo apt-get update
 sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
+sudo apt-get install libtool
 sudo apt-get install git-core
 #yes
 sudo apt-get install python
@@ -27,6 +28,7 @@ sudo apt-get install doxygen
 sudo apt-get install graphviz
 #yes
 
+cd $HOME/setup
 ### for building JAVAScript plug-in use
 #cd $HOME/Downloads
 #tar -xjvf xulrunner-3.6.28.en-US.linux-i686.sdk.tar.bz2
@@ -52,23 +54,45 @@ sudo apt-get install graphviz
 ### DBs download
 wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
 tar -xvf sqlite-autoconf-3140100.tar.gz
-wget http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.tar.gz
-tar -xvf freexl-1.0.2.tar.gz
-wget https://github.com/OSGeo/proj.4/archive/master.zip
-unzip master.zip
-wget http://gaia-gis.it/gaia-sins/readosm-1.0.0e.tar.gz
-tar -xvf readosm-1.0.0e.tar.gz
-wget http://download.osgeo.org/geos/geos-3.5.0.tar.bz2
-tar -xvf geos-3.5.0.tar.bz2
+cd sqlite-autoconf-3140100
+./configure --prefix=/usr
+sudo make install
 wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
 tar -xvf libspatialite-4.3.0a.tar.gz
 wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
 tar -xvf spatialite-tools-4.3.0.tar.gz
 
+wget http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.tar.gz
+tar -xvf freexl-1.0.2.tar.gz
+cd freexl-1.0.2
+./configure --prefix=/usr
+sudo make install
+
+#libtool install prerequired
+wget https://github.com/OSGeo/proj.4/archive/master.zip
+unzip proj.4-master.zip
+cd proj.4-master
+sh autogen.sh
+./configure --prefix=/usr
+sudo make install
+
+wget http://gaia-gis.it/gaia-sins/readosm-1.0.0e.tar.gz
+tar -xvf readosm-1.0.0e.tar.gz
+cd readosm-1.0.0e
+./configure --prefix=/usr
+sudo make install
+
+wget http://download.osgeo.org/geos/geos-3.5.0.tar.bz2
+tar -xvf geos-3.5.0.tar.bz2
+cd geos-3.5.0
+./configure --prefix=/usr
+sudo make install
+
 ### Environmental Variables
 export AJ_ROOT=$HOME/alljoyn_src
 export CPU=x86_64
 export OS=linux
+export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib:$LD_LIBRARY_PATH
 #export JAVA_HOME=/usr/lib/jvm/java-8-oracle 
 #export CLASSPATH=/usr/share/java/junit-4.12.jar
 #export GECKO_BASE=$HOME/xulrunner-sdk

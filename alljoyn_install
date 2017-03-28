@@ -1,9 +1,51 @@
 #!/bin/sh
+cd ~/
+mkdir -p setup/
+cd setup
+
 sudo apt-get update
 sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
 sudo apt-get install git-core
-wget http://jaist.dl.sourceforge.net/project/scons/scons/2.4.1/scons-2.4.1.tar.gz
-tar -xvf scons-2.4.1.tar.gz
+sudo apt-get install python
+
+#wget http://jaist.dl.sourceforge.net/project/scons/scons/2.4.1/scons-2.4.1.tar.gz
+#tar -xvf scons-2.4.1.tar.gz
+sudo apt-get install scons
+cd $HOME
+git clone http://github.com/bengardner/uncrustify.git
+cd uncrustify
+git checkout uncrustify-0.61
+sudo apt-get install autoconf
+autoreconf
+./configure
+sudo make install
+
+sudo apt-get install doxygen
+sudo apt-get install graphviz
+
+### for building JAVAScript plug-in use
+#cd $HOME/Downloads
+#tar -xjvf xulrunner-3.6.28.en-US.linux-i686.sdk.tar.bz2
+#mv xulrunner-sdk/ $HOME
+
+### for installing Java
+#sudo apt-add-repository ppa:webupd8team/java
+#sudo apt-get update
+#sudo apt-get install oracle-java8-installer
+
+### for java unit test 
+#cd $HOME/Downloads
+#wget http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
+#sudo cp junit-4.12.jar /usr/share/java/
+#sudo apt-get install ant
+
+### for cplus unit test
+#cd $HOME
+#git clone https://github.com/google/googletest.git
+#cd googletest
+#git checkout release-1.7.0
+
+### DBs download
 wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
 tar -xvf sqlite-autoconf-3140100.tar.gz
 wget http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.tar.gz
@@ -18,9 +60,27 @@ wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
 tar -xvf libspatialite-4.3.0a.tar.gz
 wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
 tar -xvf spatialite-tools-4.3.0.tar.gz
-wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-15.04.00b-src.tar.gz
-tar -xvf alljoyn-15.04.00b-src.tar.gz
-wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-services-15.04.00-src.tar.gz
-tar -xvf alljoyn-services-15.04.00-src.tar.gz
+
+### Environmental Variables
+export AJ_ROOT=$HOME/alljoyn_src
+export CPU=x86_64
+export OS=linux
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle 
+#export CLASSPATH=/usr/share/java/junit-4.12.jar
+#export GECKO_BASE=$HOME/xulrunner-sdk
+
+### alljoyn version select
+mkdir -p $AJ_ROOT/core
+cd $AJ_ROOT/core
+git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
+
+#wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-15.04.00b-src.tar.gz
+#tar -xvf alljoyn-15.04.00b-src.tar.gz
+#wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-services-15.04.00-src.tar.gz
+#tar -xvf alljoyn-services-15.04.00-src.tar.gz
+
+### alljoyn install
+cd $AJ_ROOT/core/alljoyn
+scons BINDINGS=cpp, WS=off ALL=1 VARIANT=release
 
 git clone atena:atena@129.254.88.47:/home/atena/dios-repo.git

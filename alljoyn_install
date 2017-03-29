@@ -98,9 +98,13 @@ export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/x86_64/release/dist/cpp
 #export GECKO_BASE=$HOME/xulrunner-sdk
 
 ### alljoyn version select
-mkdir -p $AJ_ROOT/core
-cd $AJ_ROOT/core
-git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
+#mkdir -p $AJ_ROOT/core
+#cd $AJ_ROOT/core
+#git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
+cd $HOME/setup
+wget https://allseenalliance.org/releases/alljoyn/16.04/alljoyn-16.04.00a-src.tar.gz
+tar -xvf alljoyn-16.04.00a-src.tar.gz
+sudo cp -r alljoyn-16.04.00a-src/ &AJ_ROOT/core/
 
 #wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-15.04.00b-src.tar.gz
 #tar -xvf alljoyn-15.04.00b-src.tar.gz
@@ -112,8 +116,8 @@ cd $AJ_ROOT/core/alljoyn
 scons BINDINGS=cpp WS=off VARIANT=release
 #scons BINDINGS=cpp WS=off VARIANT=release SERVICES="about,notification,controlpanel,config,onboarding,sample_apps"
 
-sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/libajrouter.a /usr/lib/
-sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/liballjoyn.* /usr/lib/
+sudo cp ~/alljoyn_src/core/build/linux/x86_64/release/dist/cpp/lib/libajrouter.a /usr/lib/
+sudo cp ~/alljoyn_src/core/build/linux/x86_64/release/dist/cpp/lib/liballjoyn.* /usr/lib/
 
 cd $HOME/
 git clone atena@129.254.88.47:/home/atena/dios-repo.git

@@ -109,7 +109,11 @@ git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
 
 ### alljoyn install
 cd $AJ_ROOT/core/alljoyn
-scons BINDINGS=cpp, WS=off ALL=1 VARIANT=release
+scons BINDINGS=cpp WS=off VARIANT=release
+#scons BINDINGS=cpp WS=off VARIANT=release SERVICES="about,notification,controlpanel,config,onboarding,sample_apps"
+
+sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/libajrouter.a /usr/lib/
+sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/liballjoyn.* /usr/lib/
 
 cd $HOME/
 git clone atena@129.254.88.47:/home/atena/dios-repo.git

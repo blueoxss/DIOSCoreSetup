@@ -51,17 +51,6 @@ cd $HOME/setup
 #cd googletest
 #git checkout release-1.7.0
 
-### DBs download
-wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
-tar -xvf sqlite-autoconf-3140100.tar.gz
-cd sqlite-autoconf-3140100
-./configure --prefix=/usr
-sudo make install
-wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
-tar -xvf libspatialite-4.3.0a.tar.gz
-wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
-tar -xvf spatialite-tools-4.3.0.tar.gz
-
 wget http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.tar.gz
 tar -xvf freexl-1.0.2.tar.gz
 cd freexl-1.0.2
@@ -88,6 +77,19 @@ cd geos-3.5.0
 ./configure --prefix=/usr
 sudo make install
 
+### DBs download
+wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
+tar -xvf sqlite-autoconf-3140100.tar.gz
+cd sqlite-autoconf-3140100
+./configure --prefix=/usr
+sudo make install
+wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
+tar -xvf libspatialite-4.3.0a.tar.gz
+wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
+tar -xvf spatialite-tools-4.3.0.tar.gz
+
+
+
 ### Environmental Variables
 export AJ_ROOT=$HOME/alljoyn_src
 export CPU=x86_64
@@ -98,14 +100,20 @@ export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/x86_64/release/dist/cpp
 #export GECKO_BASE=$HOME/xulrunner-sdk
 
 ### alljoyn version select
-mkdir -p $AJ_ROOT/core
-cd $AJ_ROOT/core
-git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
+sudo mkdir -p $AJ_ROOT/core
+cd $HOME/setup
+wget https://allseenalliance.org/releases/alljoyn/16.04/alljoyn-16.04.00a-src.tar.gz
+tar -xvf alljoyn-16.04.00a-src.tar.gz
+sudo cp -r alljoyn-16.04a-src $AJ_ROOT/core/alljoyn/
+
+#cd $AJ_ROOT/core
+#git clone http://git.allseenalliance.org/gerrit/core/alljoyn.git
 
 #wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-15.04.00b-src.tar.gz
 #tar -xvf alljoyn-15.04.00b-src.tar.gz
 #wget https://allseenalliance.org/releases/alljoyn/15.04/alljoyn-services-15.04.00-src.tar.gz
 #tar -xvf alljoyn-services-15.04.00-src.tar.gz
+
 
 ### alljoyn install
 cd $AJ_ROOT/core/alljoyn
@@ -117,4 +125,4 @@ sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/libal
 
 cd $HOME/
 git clone atena@129.254.88.47:/home/atena/dios-repo.git
-#yes
+#yes:

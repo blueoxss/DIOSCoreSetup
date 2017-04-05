@@ -4,7 +4,8 @@ mkdir -p setup/
 cd setup
 
 sudo apt-get update
-sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
+#sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc libxml2-dev libcap-dev
+sudo apt-get install gcc-multilib g++-multilib libc6-i386 libc6-dev-i386 libssl-dev:i386 libxml2-dev:i386
 sudo apt-get install libtool
 sudo apt-get install git-core
 #yes
@@ -85,16 +86,20 @@ cd sqlite-autoconf-3140100
 sudo make install
 wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
 tar -xvf libspatialite-4.3.0a.tar.gz
+cd libspatilalite-4.3.0a
+./configure --prefix=/usr
+sudo make install
 wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
 tar -xvf spatialite-tools-4.3.0.tar.gz
-
-
+./configure --prefix=/usr
+sudo make install
 
 ### Environmental Variables
 export AJ_ROOT=$HOME/alljoyn_src
-export CPU=x86_64
+export CPU= arm
+#x86_32
 export OS=linux
-export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/arm/release/dist/cpp/lib:$LD_LIBRARY_PATH
 #export JAVA_HOME=/usr/lib/jvm/java-8-oracle 
 #export CLASSPATH=/usr/share/java/junit-4.12.jar
 #export GECKO_BASE=$HOME/xulrunner-sdk

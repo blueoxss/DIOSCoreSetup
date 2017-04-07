@@ -1,0 +1,24 @@
+#!/bin/sh
+cd ~/
+mkdir -p setup/
+cd setup
+cd $HOME/setup
+### for building JAVAScript plug-in use
+cd $HOME/setup/
+tar -xjvf xulrunner-3.6.28.en-US.linux-i686.sdk.tar.bz2
+mv xulrunner-sdk/ $HOME
+
+### for installing Java
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+### for java unit test 
+#cd $HOME/Downloads
+#wget http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
+#sudo cp junit-4.12.jar /usr/share/java/
+#sudo apt-get install ant
+
+wget https://download.jboss.org/drools/release/6.5.0.Final/drools-distribution-6.5.0.Final.zip
+unzip -a drools-distribution-6.5.0.Final.zip
+

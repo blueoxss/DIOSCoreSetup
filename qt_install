@@ -4,16 +4,31 @@ sudo apt-get install libg11-mesa-dev libglu1-mesa-dev
 sudo apt-get install build-essential
 
 #sudo apt-add-repository ppa:ubuntu-sdk-team/ppa   
-sudo apt-get update
-
 #sudo apt-get install qtdeclarative4-dev
 
-#qt offiline installer is a stand-alone binary package including Qt libraries and Qt Creator
-wget http://download.qt.io/official_release/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run
-chmod +x qt-opensource-linux-x64-5.8.0.run
-./qt-opensource-linux-x64-5.8.0.run
+cd $HOME/setup/
 
-sudo apt-get install qtdeclarative5-dev
+#qt offiline installer is a stand-alone binary package including Qt libraries and Qt Creator
+
+##32bit linux
+sudo wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x86-online.run
+chmod +x qt-unified-linux-x86-online.run
+sudo ./qt-unified-linux-x86-online.run
+
+
+##64bit linux
+#offline
+#sudo wget http://download.qt.io/official_release/qt/5.8/5.8.0/qt-opensource-linux-x64-5.8.0.run
+#online
+#chmod +x qt-opensource-linux-x64-5.8.0.run
+#./qt-opensource-linux-x64-5.8.0.run
+#sudo apt-get install qtdeclarative5-dev
+#online
+sudo wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+sudo chmod +x qt-unified-linux-x64-online.run
+sudo ./qt-unified-linux-x64-online.run
+##############################################
+#sudo apt-get install qtdeclarative5-dev
 
 ##qt sourcefile
 

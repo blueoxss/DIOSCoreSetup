@@ -12,7 +12,7 @@ cd $HOME/setup/
 
 ##32bit linux
 sudo wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x86-online.run
-chmod +x qt-unified-linux-x86-online.run
+chmod u+x qt-unified-linux-x86-online.run
 sudo ./qt-unified-linux-x86-online.run
 
 

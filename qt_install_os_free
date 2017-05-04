@@ -1,0 +1,27 @@
+!/bin/sh
+#sudo apt-get install g++
+#sudo apt-get install libg11-mesa-dev libglu1-mesa-dev
+#sudo apt-get install build-essential
+
+mkdir -p $HOME/setup/
+cd $HOME/setup/
+
+##32bit linux
+sudo wget http://download.qt.io/archive/qt/5.7/5.7.1/single/qt-everywhere-opensource-src-5.7.1.tar.gz
+tar -xvf qt-everywhere-opensource-src-5.7.1.tar.gz
+./configure -nomake examples -nomake demos -nomake examples -no-zlib -qt-libjpeg -qt-libpng -system-xcb -platform linux-g++
+make
+make install
+
+##qt sourcefile
+
+cd ~/
+sudo vi .profile
+PATH = /usr/local/Qt-5.7.1/bin:$PATH
+export PATH
+#sudo vi .login
+#setenv PATH /usr/local/Qt-5.8.0/bin:$PATH
+
+
+
+#sudo apt-get install qtdeclarative5-dev

@@ -1,0 +1,48 @@
+!/bin/sh
+cd ~/
+mkdir -p setup/
+cd setup
+
+
+### DBs download
+wget http://www.sqlite.org/2016/sqlite-autoconf-3140100.tar.gz
+tar -xvf sqlite-autoconf-3140100.tar.gz
+cd sqlite-autoconf-3140100
+./configure --prefix=/usr
+sudo make install
+wget http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz
+tar -xvf libspatialite-4.3.0a.tar.gz
+cd libspatilalite-4.3.0a
+./configure --prefix=/usr
+sudo make install
+wget http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz
+tar -xvf spatialite-tools-4.3.0.tar.gz
+./configure --prefix=/usr
+sudo make install
+
+### Environmental Variables
+export AJ_ROOT=$HOME/alljoyn_src
+export CPU= arm
+#x86_32
+export OS=linux
+export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/arm/release/dist/cpp/lib:$LD_LIBRARY_PATH
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle 
+#export CLASSPATH=/usr/share/java/junit-4.12.jar
+#export GECKO_BASE=$HOME/xulrunner-sdk
+
+
+### alljoyn install
+cd $AJ_ROOT/core/alljoyn
+scons BINDINGS=cpp WS=off VARIANT=release
+#scons BINDINGS=cpp WS=off VARIANT=release SERVICES="about,notification,controlpanel,config,onboarding,sample_apps"
+
+sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/libajrouter.a /usr/lib/
+sudo cp ~/alljoyn_src/core/alljoyn/build/linux/x86_64/release/dist/cpp/lib/liballjoyn.* /usr/lib/
+
+cd $HOME/
+git clone atena@129.254.88.47:/home/atena/dios-repo.git
+#yes:
+
+#sudo mkdir -p /etc/dios/config/
+#sudo cp <dios-repo PATH>/temp/etc/dios/config/core.xml /etc/dios/config/
+#sudo cp <dios-repo PATH>/temp/etc/dios/config/dios* /etc/dios/config/
